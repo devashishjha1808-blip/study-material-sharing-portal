@@ -1,0 +1,81 @@
+# ===================================================================
+# Study Material Sharing Portal - Master .gitignore
+# GitHub Ready: Excludes all credentials, keys, environment configs,
+# build directories, OS files, and IDE workspace configs.
+# ===================================================================
+
+# Environment variables & Secret Keys
+.env
+.env.local
+.env.*.local
+*.env
+application-secret.properties
+application-prod-secret.yml
+keystore.jks
+*.keystore
+key.properties
+google-services.json
+GoogleService-Info.plist
+firebase-adminsdk*.json
+serviceAccountKey.json
+
+# Node & Frontend (React/Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.cache/
+frontend/coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Backend (Kotlin / Spring Boot / Gradle / Maven)
+backend/.gradle/
+backend/build/
+backend/out/
+backend/target/
+backend/bin/
+backend/*.log
+backend/uploads/
+*.class
+*.jar
+*.war
+*.nar
+
+# Mobile (Flutter / Dart)
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.packages
+mobile/build/
+mobile/.pub-cache/
+mobile/.pub/
+mobile/android/.gradle/
+mobile/android/captures/
+mobile/android/local.properties
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/flutter_export_environment.sh
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+
+# IDE & Editor files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Microservices temporary builds
+microservices/**/build/
+microservices/**/target/
+microservices/**/node_modules/
+
+# Logs
+logs/
+*.log

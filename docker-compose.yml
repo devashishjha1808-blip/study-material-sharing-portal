@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # MySQL Database Service (Experiment 7: Persistence)
+  mysqldb:
+    image: mysql:8.0
+    container_name: studyportal-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root_password_123}
+      MYSQL_DATABASE: ${DB_NAME:-studymaterial_db}
+      MYSQL_USER: ${DB_USER:-portal_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-portal_secret_pass}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - studyportal-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+
+  # Kotlin Spring Boot REST Backend (Experiments 6, 7, 8, 10)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: studyportal-backend
+    restart: on-failure
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: mysql
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/${DB_NAME:-studymaterial_db}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: ${DB_USER:-portal_user}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD:-portal_secret_pass}
+      JWT_SECRET: ${JWT_SECRET:-study_material_super_secret_jwt_key_at_least_256_bits_length_12345}
+      JWT_EXPIRATION_MS: 86400000
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+    volumes:
+      - backend_uploads:/app/uploads
+    networks:
+      - studyportal-network
+
+  # React Web Frontend (Experiments 2, 3, 10)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: studyportal-frontend
+    restart: on-failure
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_BASE_URL=http://localhost:8080/api
+    networks:
+      - studyportal-network
+
+volumes:
+  mysql_data:
+  backend_uploads:
+
+networks:
+  studyportal-network:
+    driver: bridge

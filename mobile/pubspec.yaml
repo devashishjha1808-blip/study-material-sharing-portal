@@ -1,0 +1,37 @@
+name: study_material_sharing_portal
+description: "Study Material Sharing Portal - Cross-platform Flutter client mapped to Experiments 11-15"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management (Experiment 12)
+  provider: ^6.1.2
+
+  # HTTP REST Client (Experiment 13)
+  http: ^1.2.2
+
+  # Firebase Connectivity (Experiment 14)
+  # Uses standard Firebase packages with mock fallback for local evaluations
+  # firebase_core: ^3.3.0
+  # firebase_auth: ^5.1.4
+  # cloud_firestore: ^5.2.1
+
+  # Shared Preferences for local JWT token storage (Experiment 8 & 13)
+  shared_preferences: ^2.2.3
+
+  # UI & Formatting
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
