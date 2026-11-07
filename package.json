@@ -1,0 +1,23 @@
+{
+  "name": "study-material-sharing-portal",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)]()\r [![Backend](https://img.shields.io/badge/Backend-Kotlin%20%7C%20Spring%20Boot%203-blue.svg)]()\r [![Database](https://img.shields.io/badge/Persistence-JPA%20%2F%20Hibernate%20%7C%20H2%20%2F%20MySQL-orange.svg)]()\r [![Frontend](https://img.shields.io/badge/Web-React%2018%20%7C%20Vite%20%7C%20Context%20API-61dafb.svg)]()\r [![Mobile](https://img.shields.io/badge/Mobile-Flutter%20%7C%20Dart%20%7C%20Provider-02569B.svg)]()\r [![Security](https://img.shields.io/badge/Security-Stateless%20JWT%20%7C%20BCrypt-red.svg)]()\r [![License](https://img.shields.io/badge/License-Academic%20Open%20Source-purple.svg)]()",
+  "homepage": "https://github.com/devashishjha1808-blip/study-material-sharing-portal#readme",
+  "bugs": {
+    "url": "https://github.com/devashishjha1808-blip/study-material-sharing-portal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devashishjha1808-blip/study-material-sharing-portal.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
